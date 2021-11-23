@@ -17,7 +17,7 @@ class App extends Component {
         "https://restcountries.com/v2/all?fields=name,capital,flags,population,languages,currencies"
       )
       .then((res) => {
-        this.setState({ data: res.data, isLoading: true });
+        this.setState({ data: res.data, isLoading: false });
         console.log(this.state.data);
       });
   }
