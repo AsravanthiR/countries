@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import axios from "axios";
 import number from "easy-number-formatter";
+import "./loader.css";
 
 class App extends Component {
   state = {
@@ -16,7 +17,7 @@ class App extends Component {
         "https://restcountries.com/v2/all?fields=name,capital,flags,population,languages,currencies"
       )
       .then((res) => {
-        this.setState({ data: res.data, isLoading: false });
+        this.setState({ data: res.data, isLoading: true });
         console.log(this.state.data);
       });
   }
@@ -27,9 +28,17 @@ class App extends Component {
     console.log(this.state.searchIput);
   };
   render() {
-    console.log(this.state.data);
     if (this.state.isLoading) {
-      return <div>Wait, it is loading</div>;
+      return (
+        <div>
+          <div class="lds-roller ">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      );
     }
     if (!this.state.isLoading) {
       return (
