@@ -7,6 +7,7 @@ class App extends Component {
   state = {
     data: [],
     searchIput: "",
+    isLoading: true,
   };
 
   componentDidMount() {
@@ -15,7 +16,7 @@ class App extends Component {
         "https://restcountries.com/v2/all?fields=name,capital,flags,population,languages,currencies"
       )
       .then((res) => {
-        this.setState({ data: res.data });
+        this.setState({ data: res.data, isLoading: false });
         console.log(this.state.data);
       });
   }
@@ -27,50 +28,53 @@ class App extends Component {
   };
   render() {
     console.log(this.state.data);
+    if (this.state.isLoading) {
+      return <div>Wait, it is loading</div>;
+    }
+    if (!this.state.isLoading) {
+      return (
+        <div className="countries">
+          <input
+            type="text"
+            name="search"
+            onChange={this.searchHandler.bind(this)}
+          />
 
-    return (
-      <div className="countries">
-        <input
-          type="text"
-          name="search"
-          onChange={this.searchHandler.bind(this)}
-        />
+          {this.state.data
+            .filter((country) => {
+              return country.name
+                .toLowerCase()
+                .includes(this.state.searchIput.toLowerCase());
+            })
+            .map((country) => (
+              <div className="country" key={country.name}>
+                <h2>{country.name} </h2>
 
-        {this.state.data
-          .filter((country) => {
-            return country.name
-              .toLowerCase()
-              .includes(this.state.searchIput.toLowerCase());
-          })
-          .map((country) => (
-            <div className="country" key={country.name}>
-              <h2>{country.name} </h2>
+                <h3>{country.capital}</h3>
+                <div id="about">
+                  <img src={country.flags.png} alt={country.name} />
+                </div>
 
-              <h3>{country.capital}</h3>
-              <div id="about">
-                <img src={country.flags.png} alt={country.name} />
+                <div className="cardContent">
+                  <p>
+                    Languages:
+                    {country.languages.map((lang, i) => (
+                      <span key={i}> {lang.name} </span>
+                    ))}
+                  </p>
+                  <p>
+                    Currencies:
+                    {country.currencies.map((mon, i) => (
+                      <span key={i}> {mon.name} </span>
+                    ))}
+                  </p>
+                  <p> Population: {number.formatNumber(country.population)}</p>
+                </div>
               </div>
-
-              <div className="cardContent">
-                <p>
-                  Languages:
-                  {country.languages.map((lang, i) => (
-                    <span key={i}> {lang.name} </span>
-                  ))}
-                </p>
-                <p>
-                  Currencies:
-                  {country.currencies.map((mon, i) => (
-                    <span key={i}> {mon.name} </span>
-                  ))}
-                </p>
-                <p> Population: {number.formatNumber(country.population)}</p>
-              </div>
-            </div>
-          ))}
-      </div>
-    );
+            ))}
+        </div>
+      );
+    }
   }
 }
-
 export default App;
