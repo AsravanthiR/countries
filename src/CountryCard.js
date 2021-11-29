@@ -22,18 +22,18 @@ const CountryCard = ({
 
         <div className="cardContent">
           <p>
-            Languages:
+            Languages :
             {languages.map((lang, i) => (
               <span key={i}> {lang.name} </span>
             ))}
           </p>
           <p>
-            Currencies:
+            Currencies :
             {currencies.map((mon, i) => (
               <span key={i}> {mon.name} </span>
             ))}
           </p>
-          <p> Population: {number.formatNumber(population)}</p>
+          <p> Population : {number.formatNumber(population)}</p>
         </div>
       </div>
     </Link>
