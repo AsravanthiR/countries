@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class CountrySingle extends Component {
   render() {
-    return <div></div>;
+    return <div>{this.props.params.name}</div>;
   }
 }
 
