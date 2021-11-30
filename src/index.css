@@ -28,7 +28,6 @@ body {
     rgba(0, 212, 255, 0.07466736694677867) 45%,
     rgba(1, 190, 241, 1) 59%
   );*/
-  background: url("./images/background.png") no-repeat fixed center center/cover;
 }
 .countries {
   display: flex;
@@ -93,4 +92,27 @@ input[type="text"] {
   border-width: 0.02px;
   border-style: solid;
   border-radius: 50%;
+}
+footer {
+  padding: 2rem;
+  text-align: center;
+}
+header,
+footer {
+  background-color: rgb(21, 151, 226);
+}
+.main {
+  height: 70vh;
+  width: 100%;
+  background: url("./images/background.png") no-repeat fixed center center/cover;
+}
+header ul {
+  display: flex;
+  margin-left: 5px;
+  list-style: none;
+  justify-content: space-around;
+}
+nav li a {
+  margin-left: 2rem;
+  text-decoration: none;
 }
