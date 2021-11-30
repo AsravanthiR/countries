@@ -8,7 +8,7 @@ import {
   Route,
   useParams,
 } from "react-router-dom";
-import CountryCard from "./CountryCard";
+
 import CountrySingle from "./CountrySingle";
 
 const RouteWrapper = (props) => {

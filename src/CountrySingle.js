@@ -1,24 +1,21 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { promised } from "q";
 
 function getCountry(capital) {
   return axios.get(`https://restcountries.com/v2/capital/${capital}`);
 }
 
 function getWeather(capital) {
-  return axios.get("https://api.weatherstack.com/current", {
-    params: {
-      access_key: process.env.REACT_APP_API_KEY,
-      query: capital,
-    },
-  });
+  return axios.get(
+    `http://api.openweathermap.org/data/2.5/weather?q=${capital}&units=metric&appid=${process.env.REACT_APP_OPENWEAHER_KEY_CODE}`
+  );
 }
 
 class CountrySingle extends Component {
   state = {
-    country: [],
-    weather: [],
+    country: {},
+    weather: {},
+    isLoading: true,
   };
 
   componentDidMount() {
@@ -27,19 +24,45 @@ class CountrySingle extends Component {
       getWeather(this.props.params.name),
     ]).then((res) => {
       this.setState({
-        country: res[0].data,
+        country: res[0].data[0],
         weather: res[1].data,
-        weather: res[1].data,
+        isLoading: false,
       });
+      console.log("response", res);
+      console.log("state country", this.state.country);
+      console.log("state weather", this.state.Weather);
     });
   }
   render() {
-    return (
-      <div>
-        <h3>CITY : {this.props.params.name}</h3>
-      </div>
-    );
+    if (this.state.isLoading) {
+      return (
+        <div>
+          <div className="lds-roller ">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      );
+    }
+    if (!this.state.isLoading) {
+      return (
+        <div class="statement">
+          <h1>
+            The current weather in
+            {""} {this.state.country.capital} is {this.state.weather.main.temp}{" "}
+            degrees
+          </h1>
+          <div class="weather">
+            <img
+              src={`http://openweathermap.org/img/wn/${this.state.weather.weather[0].icon}@2x.png`}
+              alt={this.state.weather.weather[0].description}
+            />
+          </div>
+        </div>
+      );
+    }
   }
 }
-
 export default CountrySingle;

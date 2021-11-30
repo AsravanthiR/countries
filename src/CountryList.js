@@ -8,9 +8,6 @@ class CountryList extends Component {
     data: [],
     searchIput: "",
     isLoading: true,
-    render() {
-      return <div></div>;
-    },
   };
   componentDidMount() {
     axios
@@ -32,7 +29,7 @@ class CountryList extends Component {
     if (this.state.isLoading) {
       return (
         <div>
-          <div class="lds-roller ">
+          <div className="lds-roller ">
             <div></div>
             <div></div>
             <div></div>
