@@ -19,7 +19,7 @@ body {
   text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: rgb(19, 136, 200);
+  /* background: rgb(19, 136, 200);
   background: linear-gradient(
     90deg,
     rgba(19, 136, 200, 1) 2%,
@@ -27,8 +27,7 @@ body {
     rgba(42, 42, 133, 1) 13%,
     rgba(0, 212, 255, 0.07466736694677867) 45%,
     rgba(1, 190, 241, 1) 59%
-  );
-  background: url("./images/background.png") no-repeat fixed center center/cover;
+  );*/
 }
 .countries {
   display: flex;
@@ -52,8 +51,8 @@ body {
 }
 
 #about img {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   position: absolute;
   top: 0;
   right: 0;
@@ -76,4 +75,44 @@ input[type="text"] {
   font-size: 17px;
   height: 50px;
   width: 100%;
+}
+.statement {
+  position: fixed;
+  text-align: center;
+  bottom: 0px;
+  width: 100%;
+}
+.weather img {
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-color: rgb(16, 154, 218);
+  border-width: 0.02px;
+  border-style: solid;
+  border-radius: 50%;
+}
+footer {
+  padding: 2rem;
+  text-align: center;
+}
+header,
+footer {
+  background-color: rgb(21, 151, 226);
+}
+.main {
+  height: 70vh;
+  width: 100%;
+  background: url("./images/background.png") no-repeat fixed center center/cover;
+}
+header ul {
+  display: flex;
+  margin-left: 5px;
+  list-style: none;
+  justify-content: space-around;
+}
+nav li a {
+  margin-left: 2rem;
+  text-decoration: none;
 }

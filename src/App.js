@@ -1,6 +1,9 @@
 import React from "react";
 import Home from "./Home";
 import CountryList from "./CountryList";
+import Header from "./Header";
+import Footer from "./Footer";
+
 import {
   BrowserRouter,
   Link,
@@ -8,7 +11,7 @@ import {
   Route,
   useParams,
 } from "react-router-dom";
-import CountryCard from "./CountryCard";
+
 import CountrySingle from "./CountrySingle";
 
 const RouteWrapper = (props) => {
@@ -19,26 +22,16 @@ const RouteWrapper = (props) => {
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">
-              <h2>Home</h2>
-            </Link>
-          </li>
-          <li>
-            <Link to="/countries">
-              <h2>Countries</h2>
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <Header />
+      <div className="main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/countries" element={<CountryList />} />
+          <Route path="/countries/:name" element={<RouteWrapper />} />
+        </Routes>
+      </div>
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/countries" element={<CountryList />} />
-        <Route path="/countries/:name" element={<RouteWrapper />} />
-      </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
