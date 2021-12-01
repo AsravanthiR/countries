@@ -2,7 +2,6 @@ import React from "react";
 import Home from "./Home";
 import CountryList from "./CountryList";
 import Header from "./Header";
-import Footer from "./Footer";
 
 import {
   BrowserRouter,
@@ -30,8 +29,6 @@ function App() {
           <Route path="/countries/:name" element={<RouteWrapper />} />
         </Routes>
       </div>
-
-      <Footer />
     </BrowserRouter>
   );
 }
