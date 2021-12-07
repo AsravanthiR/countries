@@ -7,7 +7,7 @@ function getCountry(capital) {
 
 function getWeather(capital) {
   return axios.get(
-    `https://api.openweathermap.org/data/2.5/weather?q=${capital}&units=metric&appid=${process.env.REACT_APP_OPENWEAHER_KEY_CODE}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${capital}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_KEY_CODE}`
   );
 }
 
