@@ -7,7 +7,7 @@ function getCountry(capital) {
 
 function getWeather(capital) {
   return axios.get(
-    `http://api.openweathermap.org/data/2.5/weather?q=${capital}&units=metric&appid=${process.env.REACT_APP_OPENWEAHER_KEY_CODE}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${capital}&units=metric&appid=${process.env.REACT_APP_OPENWEAHER_KEY_CODE}`
   );
 }
 
@@ -56,7 +56,7 @@ class CountrySingle extends Component {
           </h1>
           <div class="weather">
             <img
-              src={`http://openweathermap.org/img/wn/${this.state.weather.weather[0].icon}@2x.png`}
+              src={`https://openweathermap.org/img/wn/${this.state.weather.weather[0].icon}@2x.png`}
               alt={this.state.weather.weather[0].description}
             />
           </div>
