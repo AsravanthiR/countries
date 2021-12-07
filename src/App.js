@@ -3,13 +3,7 @@ import Home from "./Home";
 import CountryList from "./CountryList";
 import Header from "./Header";
 
-import {
-  BrowserRouter,
-  Link,
-  Routes,
-  Route,
-  useParams,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 
 import CountrySingle from "./CountrySingle";
 
