@@ -46,23 +46,20 @@ class CountrySingle extends Component {
         </div>
       );
     }
+
     if (!this.state.isLoading) {
       return (
-        <div class="statement">
-          <h1>
-            The current weather in
-            {""} {this.state.country.capital} is {this.state.weather.main.temp}{" "}
-            degrees
-          </h1>
-          <div class="weather">
-            <img
-              src={`https://openweathermap.org/img/wn/${this.state.weather.weather[0].icon}@2x.png`}
-              alt={this.state.weather.weather[0].description}
-            />
-          </div>
+        <div>
+          Right now it is {this.state.weather.main.temp} degrees in{" "}
+          {this.state.country.capital}
+          <img
+            src={`http://openweathermap.org/img/wn/${this.state.weather.weather[0].icon}@2x.png`}
+            alt={this.state.weather.weather[0].description}
+          />
         </div>
       );
     }
   }
 }
+
 export default CountrySingle;
