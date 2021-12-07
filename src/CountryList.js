@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import CountryCard from "./CountryCard";
 import axios from "axios";
 import "./loader.css";
+import { Outlet } from "react-router-dom";
 
 class CountryList extends Component {
   state = {
@@ -41,6 +42,8 @@ class CountryList extends Component {
     if (!this.state.isLoading) {
       return (
         <div className="countries">
+          <Outlet />
+
           <input
             type="text"
             name="search"
