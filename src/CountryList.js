@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import CountryCard from "./CountryCard";
 import axios from "axios";
 import "./loader.css";
-import { Outlet } from "react-router-dom";
 
 class CountryList extends Component {
   state = {
@@ -13,18 +12,18 @@ class CountryList extends Component {
   componentDidMount() {
     axios
       .get(
-        "https://restcountries.com/v2/all?fields=name,capital,flags,population,languages,currencies"
+        "https://restcountries.com/v2/all?fields=name,capital,flags,languages,population,currencies"
       )
       .then((res) => {
         this.setState({ data: res.data, isLoading: false });
-        console.log(this.state.data);
+        this.state.data.map((country) => console.log(this.state.data));
       });
   }
   searchHandler = (e) => {
     this.setState({
-      searchIput: e.target.value,
+      searchInput: e.target.value,
     });
-    console.log(this.state.searchIput);
+    console.log(this.state.searchInput);
   };
   render() {
     if (this.state.isLoading) {
@@ -42,8 +41,6 @@ class CountryList extends Component {
     if (!this.state.isLoading) {
       return (
         <div className="countries">
-          <Outlet />
-
           <input
             type="text"
             name="search"
